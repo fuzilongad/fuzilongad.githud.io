@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数字展销平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        body {
+            background-color: #ebccb3;
+            color: #814f41;
+        }
+        header {
+            background-color: #fc6237;
+            padding: 15px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .header-wrap {
+            width: 1500px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .logo {
+            float: left;
+            font-size: 25px;
+            font-weight: bold;
+            color: #755245;
+            padding-left: 50px;
+            width: 1000px;
+        }
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            margin-bottom: -35px;
+            border-radius: 4px;
+            overflow: hidden;
+            content:icon;
+        }
+        .logo-img img{
+            width: 40px;
+            height: 40px;
+        }
+        .logo-img :hover{
+            cursor: pointer;
+        }
+        nav {
+            float: right;
+            margin-top: 5px;
+        }
+        nav ul {
+            list-style: none;
+        }
+        nav li {
+            float: left;
+            margin-right: 170px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #5d4037;
+            padding: 5px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+        nav a:hover {
+            background-color: #bcAAA4;
+            color: #fff;
+        }
+        .main-wrap {
+            width: 1000px;
+            margin:auto;
+            overflow: hidden;
+            height: 1000px;
+        }
+        .left-col {
+            width: 220px;
+            float: left;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .cat-title {
+            font-size: 20px;
+            color: #8d6e63;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        .cat-list {
+            list-style: none;
+        }
+        .cat-list li {
+            margin-bottom: 15px;
+            position: relative;
+            left: 8px; 
+        }
+        .cat-list a {
+            text-decoration: none;
+            color: #5d4037;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+        .cat-list a:hover {
+            color: #d35400;
+            font-weight: bold;
+        }
+        .center-col {
+            width: 500px;
+            float: left;
+            margin:30px
+        }
+        .banner {
+            background-color: #ffcc80;
+            border-radius: 80px;
+            height: 100px;
+            margin-bottom: 20px;
+            padding: 25px;
+        }
+        .banner h2 {
+            color: #d35400;
+            margin-bottom: 10px;
+        }
+        .banner p {
+            margin-bottom: 15px;
+        }
+        .banner-btn {
+            display: inline-block;
+            background-color: #d35400;
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .banner-btn:hover {
+            background-color: #e67e22;
+        }
+        .sec-title {
+            font-size: 20px;
+            color: #8d6e63;
+            margin: 20px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #eee;
+        }
+        .hot-books {
+            overflow: hidden;
+        }
+        .book-item {
+            width: 215px;
+            float: left;
+            margin-right: 35px;
+            margin-bottom: 52px;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        .book-item:nth-child(4n) {
+            margin-right: 0;
+        }
+        .book-item:hover {
+            transform: translateY(-5px);
+        }
+        .book-img {
+            height: 200px;
+            background-color: #e0e0e0;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            content:icon;
+        }
+        .book-img:hover{
+            cursor: pointer;
+        }
+        .book-img img {
+            width: 185px;
+            height: 100%;
+            object-fit: cover;
+        }
+        .book-title {
+            font-weight: bold;
+            margin-bottom: 1px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .book-price {
+            color: #d35400;
+            font-weight: bold;
+        }
+        .new-books table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .new-books th, .new-books td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #f1f1f1;
+        }
+        .new-books th {
+            background-color: #efebe9;
+            color: #5d4037;
+        }
+        .new-books tr:hover {
+            background-color: #f5f5f5;
+        }
+        .right-col {
+            width: 220px;
+            float: right;
+        }
+        .promo {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .promo-title {
+            font-size: 18px;
+            color: #d35400;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .promo-img {
+            height: 240px;
+            margin-bottom: 12px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .promo-img:hover{
+            cursor: pointer;
+        }
+        .promo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .promo-price {
+            color: #d35400;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 8px 0;
+            text-align: center;
+        }
+        .time-limit {
+            background-color: #fff3e0;
+            padding: 16px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .countdown {
+            font-size: 16px;
+            color: #e65100;
+            font-weight: bold;
+        }
+        footer {
+            background-color: #5d4037;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-wrap">
+             <div class="logo-img">
+                <img src="logo.jpg" alt="logo">
+             </div>
+            <div class="logo">
+                <span>数字展销平台</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a>首页</a></li>
+                    <li><a>图书分类</a></li>
+                    <li><a>新品上市</a></li>
+                    <li><a>限时特惠</a></li>
+                    <li><a>帮助</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="main-wrap">
+        <div class="left-col">
+            <h3 class="cat-title">图书分类</h3>
+            <ul class="cat-list">
+                <li><a>文学小说</a></li>
+                <li><a>历史传记</a></li>
+                <li><a>科普读物</a></li>
+                <li><a>计算机科学</a></li>
+                <li><a>农业科学</a></li>
+                <li><a>经济管理</a></li>
+                <li><a>工业技术</a></li>
+                <li><a>交通运输</a></li>
+                <li><a>生物科学</a></li>
+                <li><a>航空航天</a></li>
+                <li><a>文学艺术</a></li>
+                <li><a>地理传记</a></li>
+                <li><a>自然科学</a></li>
+                <li><a>医药卫生</a></li>
+                <li><a>哲学宗教</a></li>
+                <li><a>社会科学</a></li>
+                <li><a>环境安全</a></li>
+            </ul>
+        </div>
+        <div class="center-col">
+            <h3 class="sec-title">热门推荐</h3>
+            <div class="hot-books">
+                <div class="book-item">
+                    <div class="book-img">
+                        <img src="人间草木.jpg" alt="人间草木">
+                    </div>
+                    <div class="book-title">人间草木</div>
+                    <div class="book-price">¥32.80</div>
+                </div>
+                <div class="book-item">
+                    <div class="book-img">
+                        <img src="活着.jpg" alt="活着">
+                    </div>
+                    <div class="book-title">活着</div>
+                    <div class="book-price">¥29.50</div>
+                </div>
+                <div class="book-item">
+                    <div class="book-img">
+                        <img src="三体.jpg" alt="三体">
+                    </div>
+                    <div class="book-title">三体</div>
+                    <div class="book-price">¥58.00</div>
+                </div>
+                <div class="book-item">
+                    <div class="book-img">
+                        <img src="解忧杂货店.jpg" alt="解忧杂货店">
+                    </div>
+                    <div class="book-title">解忧杂货店</div>
+                    <div class="book-price">¥45.00</div>
+                </div>
+            </div>
+
+            <h3 class="sec-title">新书上市</h3>
+            <div class="new-books">
+                <table>
+                    <tr>
+                        <th>书名</th>
+                        <th>作者</th>
+                        <th>价格</th>
+                    </tr>
+                    <tr>
+                        <td>秋光正好</td>
+                        <td>林彦</td>
+                        <td>¥42.00</td>
+                    </tr>
+                    <tr>
+                        <td>数据结构与算法</td>
+                        <td>陈越</td>
+                        <td>¥79.00</td>
+                    </tr>
+                    <tr>
+                        <td>人类简史</td>
+                        <td>尤瓦尔·赫拉利</td>
+                        <td>¥68.00</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="right-col">
+            <div class="promo">
+                <h3 class="promo-title">秋分特惠</h3>
+                <div class="promo-img">
+                    <img src="秋分特惠.jpg" alt="秋分特惠">
+                </div>
+                <div class="promo-price">¥99.00</div>
+                <p style="text-decoration: line-through; color: #999;">原价: ¥199.00</p>
+            </div>
+
+            <div class="promo time-limit">
+                <h3 class="promo-title">限时秒杀</h3>
+                <div class="promo-img">
+                    <img src="限时秒杀.jpg" alt="限时秒杀">
+                </div>
+                <div class="promo-price">¥29.90</div>
+                <div class="countdown">倒计时: 06:06:06</div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>数字展销平台 &copy; 2025 10 22</p>
+    </footer>
+</body>
+</html>
