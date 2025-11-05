@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数字展销平台</title>
+    <link rel="stylesheet" href="css/4.css">
+</head>
+<body>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+    <div class="toast" id="toast">商品已添加到购物车！</div>
+    <div class="img-preview" id="imgPreview">
+        <img src="" alt="图片预览">
+        <span class="close-preview">×</span>
+    </div>
+    <header>
+        <div class="header-wrap">
+            <div class="logo-img">
+                <img src="logo.jpg" alt="logo">
+            </div>
+            <div class="logo">
+                <span>数字展销平台</span>
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a>首页</a>
+                        <div class="dropdown-content">
+                            <a>热门推荐</a>
+                            <a>限时特惠</a>
+                            <a>新书上市</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a>图书分类</a>
+                        <div class="dropdown-content category-dropdown">
+                            <a>文学小说</a>
+                            <a>历史传记</a>
+                            <a>科普读物</a>
+                            <a>计算机科学</a>
+                            <a>农业科学</a>
+                            <a>经济管理</a>
+                            <a>工业技术</a>
+                            <a>交通运输</a>
+                            <a>生物科学</a>
+                            <a>航空航天</a>
+                            <a>文学艺术</a>
+                            <a>地理传记</a>
+                            <a>自然科学</a>
+                            <a>医药卫生</a>
+                            <a>哲学宗教</a>
+                            <a>社会科学</a>
+                            <a>环境安全</a>
+                        </div>
+                    </li>
+                    <li><a>新书上市</a></li>
+                    <li><a>限时特惠</a></li>
+                    <li><a>帮助</a></li>
+                    <li><a>关于我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>   
+    <div class="main-wrap">
+        <div class="left-col">
+            <h3 class="cat-title">图书分类</h3>
+            <ul class="cat-list">
+                <li><a>文学小说</a></li>
+                <li><a>历史传记</a></li>
+                <li><a>科普读物</a></li>
+                <li><a>计算机科学</a></li>
+                <li><a>农业科学</a></li>
+                <li><a>经济管理</a></li>
+                <li><a>工业技术</a></li>
+                <li><a>交通运输</a></li>
+                <li><a>生物科学</a></li>
+                <li><a>航空航天</a></li>
+                <li><a>文学艺术</a></li>
+                <li><a>地理传记</a></li>
+                <li><a>自然科学</a></li>
+                <li><a>医药卫生</a></li>
+                <li><a>哲学宗教</a></li>
+                <li><a>社会科学</a></li>
+                <li><a>环境安全</a></li>
+            </ul>
+        </div>       
+        <div class="center-col">
+            <div class="filter-bar">
+                <div class="filter-item">
+                    <label>分类筛选：</label>
+                    <select id="categoryFilter">
+                        <option value="all">全部分类</option>
+                        <option value="literature">文学小说</option>
+                        <option value="history">历史传记</option>
+                        <option value="science">科普读物</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label>价格筛选：</label>
+                    <select id="priceFilter">
+                        <option value="all">全部价格</option>
+                        <option value="0-30">0-30元</option>
+                        <option value="30-60">30-60元</option>
+                        <option value="60+">60元以上</option>
+                    </select>
+                </div>
+                <button id="filterBtn">筛选</button>
+            </div>
+            <div class="carousel-indicators">
+                <div class="indicator active"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+            </div>
+            <h3 class="sec-title">热门推荐</h3>
+            <div class="hot-books">
+                <div class="book-item" data-category="literature" data-price="32.8">
+                    <div class="book-badge">热卖</div>
+                    <div class="book-img">
+                        <img src="人间草木.jpg" alt="人间草木" data-large="人间草木-large.jpg">
+                    </div>
+                    <div class="book-title">人间草木</div>
+                    <div class="book-price">¥32.80</div>
+                    <div class="book-actions">
+                        <button class="action-btn">加入购物车</button>
+                        <button class="action-btn">立即购买</button>
+                        <button class="action-btn view-detail">查看详情</button>
+                    </div>
+                    <div class="book-detail">
+                        <p>《人间草木》是汪曾祺先生的经典散文作品集，内容涵盖草木山川、花鸟虫鱼、乡情民俗、凡人小事...</p>
+                        <p>作者：汪曾祺</p>
+                    </div>
+                </div>
+                <div class="book-item" data-category="literature" data-price="29.5">
+                    <div class="book-badge">新品</div>
+                    <div class="book-img">
+                        <img src="活着.jpg" alt="活着" data-large="活着-large.jpg">
+                    </div>
+                    <div class="book-title">活着</div>
+                    <div class="book-price">¥29.50</div>
+                    <div class="book-actions">
+                        <button class="action-btn">加入购物车</button>
+                        <button class="action-btn">立即购买</button>
+                        <button class="action-btn view-detail">查看详情</button>
+                    </div>
+                    <div class="book-detail">
+                        <p>《活着》是余华的代表作之一，讲述了主人公福贵坎坷曲折的一生，在苦难中展现生命的韧性...</p>
+                        <p>作者：余华</p>
+                    </div>
+                </div>
+                <div class="book-item" data-category="science" data-price="58">
+                    <div class="book-img">
+                        <img src="三体.jpg" alt="三体" data-large="三体-large.jpg">
+                    </div>
+                    <div class="book-title">三体</div>
+                    <div class="book-price">¥58.00</div>
+                    <div class="book-actions">
+                        <button class="action-btn">加入购物车</button>
+                        <button class="action-btn">立即购买</button>
+                        <button class="action-btn view-detail">查看详情</button>
+                    </div>
+                    <div class="book-detail">
+                        <p>《三体》是刘慈欣的科幻巨著，构建了宏大的宇宙文明图景，探讨了黑暗森林法则、文明存续等深刻命题...</p>
+                        <p>作者：刘慈欣</p>
+                    </div>
+                </div>
+                <div class="book-item" data-category="literature" data-price="45">
+                    <div class="book-badge">特价</div>
+                    <div class="book-img">
+                        <img src="解忧杂货店.jpg" alt="解忧杂货店" data-large="解忧杂货店-large.jpg">
+                    </div>
+                    <div class="book-title">解忧杂货店</div>
+                    <div class="book-price">¥45.00</div>
+                    <div class="book-actions">
+                        <button class="action-btn">加入购物车</button>
+                        <button class="action-btn">立即购买</button>
+                        <button class="action-btn view-detail">查看详情</button>
+                    </div>
+                    <div class="book-detail">
+                        <p>《解忧杂货店》是东野圭吾的温情推理小说，通过跨越时空的信件，串联起几个陌生人的命运...</p>
+                        <p>作者：东野圭吾</p>
+                        </div>
+                    </div>
+            </div>
+            <h3 class="sec-title">新书上市</h3>
+            <div class="new-books">
+                <table>
+                    <tr>
+                        <th>书名</th>
+                        <th>作者</th>
+                        <th>价格</th>
+                    </tr>
+                    <tr>
+                        <td>秋光正好</td>
+                        <td>林彦</td>
+                        <td>¥42.00</td>
+                    </tr>
+                    <tr>
+                        <td>数据结构与算法</td>
+                        <td>陈越</td>
+                        <td>¥79.00</td>
+                    </tr>
+                    <tr>
+                        <td>人类简史</td>
+                        <td>尤瓦尔·赫拉利</td>
+                        <td>¥68.00</td>
+                    </tr>
+                </table>
+            </div>
+        </div>     
+        <div class="right-col">
+            <div class="promo">
+                <h3 class="promo-title">秋分特惠</h3>
+                <div class="promo-img">
+                    <img src="秋分特惠.jpg" alt="秋分特惠" data-large="秋分特惠-large.jpg">
+                </div>
+                <div class="promo-price">¥99.00</div>
+                <p style="text-decoration: line-through; color: #999;">原价: ¥199.00</p>
+            </div>
+            <div class="promo time-limit">
+                <h3 class="promo-title">限时秒杀</h3>
+                <div class="promo-img">
+                    <img src="限时秒杀.jpg" alt="限时秒杀" data-large="限时秒杀-large.jpg">
+                </div>
+                <div class="promo-price">¥29.90</div>
+                <div class="countdown">倒计时: 06:06:06</div>
+            </div>
+        </div>
+    </div>
+    <div class="floating-cart" id="floatingCart">
+        <span>🛒</span>
+        <div class="cart-count">3</div>
+    </div>    
+    <div class="back-to-top" id="backToTop">↑</div>    
+    <footer>
+        <p>数字展销平台 &copy; 2025 11 04</p>
+    </footer>
+    <script>
+        window.addEventListener('scroll', function() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTop
+.classList.add('visible');
+            } else {
+                backToTop
+.classList.remove('visible');
+            }
+        });
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+        document.querySelectorAll('.action-btn').forEach(button => {
+            button
+.addEventListener('click', function(e) {
+                e
+.stopPropagation();
+                showToast('商品已添加到购物车！');
+                const cartCount = document.querySelector('.cart-count');
+                let count = parseInt(cartCount.textContent);
+                cartCount
+.textContent = count + 1;
+                const loadingOverlay = document.getElementById('loadingOverlay');
+                loadingOverlay
+.classList.add('active');
+                setTimeout(() => {
+                    loadingOverlay
+.classList.remove('active');
+                }, 1000);
+            });
+        });
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast
+.textContent = message;
+            toast
+.classList.add('show');
+            setTimeout(() => {
+                toast
+.classList.remove('show');
+            }, 3000);
+        }
+        document.querySelectorAll('.book-img, .promo-img').forEach(img => {
+            img
+.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+            });
+            img
+.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+            img
+.addEventListener('click', function() {
+                const largeSrc = this.querySelector('img') ? this.querySelector('img').getAttribute('data-large') : this.getAttribute('data-large');
+                document.getElementById('imgPreview').querySelector('img').setAttribute('src', largeSrc);
+                document.getElementById('imgPreview').classList.add('show');
+            });
+        });
+        document.querySelector('.close-preview').addEventListener('click', function() {
+            document.getElementById('imgPreview').classList.remove('show');
+        });
+        document.querySelectorAll('.book-item').forEach(item => {
+            item
+.addEventListener('mouseenter', function() {
+                this.querySelector('.book-detail').style.display = 'block';
+            });
+            item
+.addEventListener('mouseleave', function() {
+                this.querySelector('.book-detail').style.display = 'none';
+            });
+        });
+        document.getElementById('filterBtn').addEventListener('click', function() {
+            const category = document.getElementById('categoryFilter').value;
+            const price = document.getElementById('priceFilter').value;
+            document.querySelectorAll('.book-item').forEach(item => {
+                let show = true;
+                if (category !== 'all') {
+                    show 
+= show && (item.getAttribute('data-category') === category);
+                }
+                if (price !== 'all') {
+                    const itemPrice = parseFloat(item.getAttribute('data-price'));
+                    if (price === '0-30') {
+                        show 
+= show && (itemPrice >= 0 && itemPrice <= 30);
+                    } else if (price === '30-60') {
+                        show 
+= show && (itemPrice > 30 && itemPrice <= 60);
+                    } else if (price === '60+') {
+                        show 
+= show && (itemPrice > 60);
+                    }
+                }
+                item
+.style.display = show ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
